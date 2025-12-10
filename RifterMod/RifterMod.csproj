@@ -38,9 +38,11 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="BepInEx.Core" Version="5.*" />
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.3.6-r.0" />
+		<PackageReference Include="MetrosexualFruitcake-CustomEmotesAPI" Version="2.11.0" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.4.1-r.0" />
+		<PackageReference Include="Rune580-Risk_Of_Options" Version="2.8.4" />
 		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
-		<PackageReference Include="MMHOOK.RoR2" Version="2024.12.10">
+		<PackageReference Include="MMHOOK.RoR2" Version="2025.11.19">
 			<NoWarn>NU1701</NoWarn>
 		</PackageReference>
 		<PackageReference Include="R2API.DamageType" Version="1.*" />
@@ -51,18 +53,6 @@
 		<PackageReference Include="R2API.Language" Version="1.*" />
 		<PackageReference Include="R2API.Sound" Version="1.*" />
 		<PackageReference Include="R2API.Networking" Version="1.*" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Reference Include="CustomEmotesAPI">
-	    <HintPath>C:\Users\15039\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Dev\BepInEx\plugins\MetrosexualFruitcake-CustomEmotesAPI\CustomEmotesAPI.dll</HintPath>
-	  </Reference>
-	  <Reference Include="MMHOOK_RoR2">
-	    <HintPath>C:\Users\15039\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Seekers of da Stahrm\BepInEx\plugins\MMHOOK\MMHOOK_RoR2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="RiskOfOptions">
-	    <HintPath>C:\Users\15039\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Dev\BepInEx\plugins\Rune580-Risk_Of_Options\RiskOfOptions\RiskOfOptions.dll</HintPath>
-	  </Reference>
 	</ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="&#xD;&#xA;copy /Y &quot;$(TargetPath)&quot; &quot;$(ProjectDir)..\Build\plugins&quot;&#xD;&#xA;&#xD;&#xA;REM follow the Building Your Mod page on the Riftertutorial wiki for more information on this&#xD;&#xA;REM change this to your username (or add yours if you're working in a team or somethin)&#xD;&#xA;if &quot;$(Username)&quot; == &quot;15039&quot; set build=true&#xD;&#xA;&#xD;&#xA;if defined build (&#xD;&#xA;&#xD;&#xA;REM copy the built mod to our Build folder&#xD;&#xA;copy &quot;$(TargetPath)&quot; &quot;$(ProjectDir)..\Build\plugins&quot;&#xD;&#xA;&#xD;&#xA;REM copy the assetbundle from our unity project to our Build folder&#xA;REM change these paths to your (now hopefully renamed) folders&#xA;if exist &quot;$(ProjectDir)..\RifterUnityProject\AssetBundles\rifterassetbundle&quot; (&#xA;copy &quot;$(ProjectDir)..\RifterUnityProject\AssetBundles\rifterassetbundle&quot; &quot;$(ProjectDir)..\Build\plugins\AssetBundles&quot;&#xA;)&#xD;&#xA;&#xD;&#xA;REM copy the whole Build\plugins folder into your r2modman profile. This mimics how r2modman will install your mod&#xA;Xcopy /E /I /Y &quot;$(ProjectDir)..\Build\plugins&quot; &quot;C:\Users\15039\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Dev\ Returns\BepInEx\plugins\Blake-Rifter\&quot;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;REM First we copy the from the output folder to the NetworkWeaver folder.&#xD;&#xA;REM We store the output from robocopy in a file called robocopy which we'll delete at the end of the file.&#xD;&#xA;robocopy &quot;$(TargetDir) &quot; &quot;$(ProjectDir)NetworkWeaver&quot; &quot;$(TargetFileName)&quot; &gt; &quot;$(TargetDir)Robocopy&quot;&#xD;&#xA;robocopy &quot;$(TargetDir) &quot; &quot;$(ProjectDir)NetworkWeaver&quot; &quot;$(TargetName).pdb&quot; &gt; &quot;$(TargetDir)Robocopy&quot;&#xD;&#xA;&#xD;&#xA;REM Then we navigate our script to the NetworkWeaver folder to make the follow up line less verbose.&#xD;&#xA;cd &quot;$(ProjectDir)\NetworkWeaver&quot;&#xD;&#xA;&#xD;&#xA;REM Unity.UNetWeaver.exe {path to Coremodule} {Path to Networking} {Path to output folder} {Path to the dll you want patched} {Path to all needed references for the to-be-patched dll}&#xD;&#xA;Unity.UNetWeaver.exe &quot;../libs/UnityEngine.CoreModule.dll&quot; &quot;../libs/com.unity.multiplayer-hlapi.Runtime.dll&quot; &quot;Patched/&quot;  $(TargetFileName) &quot;$(ProjectDir)/libs&quot;&#xD;&#xA;&#xD;&#xA;REM We store the prepatched dll disabled as a .prepatch so that you can check it if you want, but first we need to make sure that file doesn't exist already.&#xD;&#xA;IF EXIST &quot;$(TargetFileName).prepatch&quot; (&#xD;&#xA;DEL /F &quot;$(TargetFileName).prepatch&quot;&#xD;&#xA;)&#xD;&#xA;IF EXIST &quot;$(TargetFileName).prepatch&quot; (&#xD;&#xA;DEL /F &quot;$(TargetFile).pdb.prepatch&quot;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;REM Then we rename the prepatched file to bla.dll.prepatch&#xD;&#xA;ren &quot;$(TargetFileName)&quot; &quot;$(TargetFileName).prepatch&quot;&#xD;&#xA;ren &quot;$(TargetName).pdb&quot; &quot;$(TargetName).pdb.prepatch&quot;&#xD;&#xA;&#xD;&#xA;REM move our script to the Patched Folder&#xD;&#xA;cd Patched&#xD;&#xA;&#xD;&#xA;REM move from the current directory (.) to the projectDirectory and store the output once more to the Robocopy file.&#xD;&#xA;robocopy &quot;.&quot; &quot;$(ProjectDir) &quot; &quot;$(TargetFileName)&quot; &gt; &quot;$(TargetDir)Robocopy&quot;&#xD;&#xA;robocopy &quot;.&quot; &quot;$(ProjectDir) &quot; &quot;$(TargetName).pdb&quot; &gt; &quot;$(TargetDir)Robocopy&quot;&#xD;&#xA;&#xD;&#xA;REM Remove the patched file from the Patched folder, because the Weaver won't run if the file already exists.&#xD;&#xA;del &quot;$(TargetFileName)&quot;&#xD;&#xA;del &quot;$(TargetName).pdb&quot;&#xD;&#xA;&#xD;&#xA;REM Delete the holder for all robocopy output.&#xD;&#xA;del &quot;$(TargetDir)Robocopy&quot;&#xD;&#xA;" />

@@ -174,6 +174,12 @@ namespace RifterMod.Survivors.Rifter
 
             Prefabs.AddEntityStateMachine(bodyPrefab, "Weapon");
             Prefabs.AddEntityStateMachine(bodyPrefab, "Weapon2");
+            bodyPrefab.GetComponent<CharacterBody>().vehicleIdleStateMachine = new EntityStateMachine[]
+{
+                EntityStateMachine.FindByCustomName(bodyPrefab, "Body"),
+                EntityStateMachine.FindByCustomName(bodyPrefab, "Weapon"),
+                EntityStateMachine.FindByCustomName(bodyPrefab, "Weapon2")
+};
         }
 
         #region skills

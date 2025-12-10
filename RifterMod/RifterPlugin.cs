@@ -94,7 +94,11 @@ namespace RifterMod
 
         public void Start()
         {
-            SetupRifterPlugin();
+          
+            if (riskOfOptionsLoaded)
+            {
+                SetupRifterPlugin();
+            }
         }
 
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
