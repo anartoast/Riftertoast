@@ -1,38 +1,14 @@
 # ChangeLog
 
-ver 1.1.3
-- Slightly increased the speed of Wandering Rift
-- removed some NRE's
-- 10 shatter visual disappears now. Yippee.
-- Fixed bug where client would not teleport enemies to their respective timelock.
+ver 1.0.3
+- Fixed something? By leading Nem Rifter to a shady street and hugging her from the back (Thanks score).
 
-ver 1.1.2
-- the dreaded hurtbox position not being correct. Thanks Nicolas489 for pointing it out... again!
-- Timelock explodes when it expires now. It won't teleport enemies though
-- Chained Worlds now applies 10 shatter on the last rift, is a SPECIAL ability, and lowered the cooldown. It felt bad to lose a movement option for it. So it's back in its rightful place.
-- Removed some debug lines.
-- Fixed some nullRefs (thanks .score!)
-
-ver 1.1.1
-- fixed bug where fracture damage was scaled incorrectly
-- fixed some visual bugs with the rifts. Hopefully all of them...
-- possible performance fix. But maybe not.
-- New character icon to match the style and model shader changes
-
-ver 1.1.0
-- New Abilities! Wandering Rift and Chained Worlds make an entrance (or reentrance)
-- Quantum portals is fully networked!
-- Emote compatibility!
- - note: it's a scuffed implementation, which involved messing with the bone structure of the original model. Base animations look... alright now, but not as good as they used to. I'll fix it soon!
-- Changed damage falloff scaling logic.
-- Changed a lot of things to have 1.0 proc coefficient. heh
-- Added hitEffects and Muzzle flash 
- 
 ver 1.0.2
-- Slight buffs update
-- Fracture deals 70% instead of 60% damage. Damage scales up to 170% at ideal rift distance. Scaling not included in secondary skill, though might be added later depending on feedback.
-- midrange rift deals 460% damage instead of 450%.
-- reasons for changes is it is too punishing when you don't hit at the perfect range. This should help deal damage outside of ideal range a little better, and help gauge the distance a little better by how much damage you're dealing.
+- Fixed Rifter not appearing from it's drop pod. Hes been resting lately, don't worry about it.
+- Backstage stuff that i already forgot
+-Under new maintaince :o
+- Thanks score (the peak).
+
 
 ver 1.0.1
 - Mostly a visual update.
