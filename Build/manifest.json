@@ -1,7 +1,7 @@
 {
     "name": "Rifter",
     "author": "toastyTeam",
-    "version_number":"1.0.3",
+    "version_number":"1.1.0",
     "website_url": "https://discord.gg/jr8v9VbXXC",
     "description": "Adds Rifter, a positional-based survivor.",
     "dependencies": [

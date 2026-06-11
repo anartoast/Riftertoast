@@ -1,5 +1,8 @@
 # ChangeLog
 
+ver 1.1.0
+- I got so mad i learned how to code again so i could have a ptbr translation that wasnt touched by ai. spite is a good motivator i guess.
+
 ver 1.0.3
 - Fixed something? By leading Nem Rifter to a shady street and hugging her from the back (Thanks score).
 

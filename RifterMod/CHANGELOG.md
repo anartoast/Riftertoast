@@ -1,7 +1,7 @@
 # ChangeLog
 ver 1.0.1
 - Mostly a visual update.
-- Finalized icons for all moves! Thank you Anartoast once again.
+- Finalized icons for all moves! Thank you anartoast once again.
 - MainHurtbox origin relocated. This fixes a bug where certain item displays (e.g. oddly shaped opal sphere) were not centered on the character.
 - Item displays added for base game and sotv items.
 - Ragdoll on death added.
@@ -17,7 +17,7 @@ ver 1.0.0
 - config cleanup. 
 
 ver 0.5.8
- - wip icons. Anartoast is goated.
+ - wip icons. anartoast is goated.
  - that's it, I think. Small update.
  
 ver 0.5.7
